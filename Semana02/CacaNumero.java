@@ -35,19 +35,15 @@ public class CacaNumero {
     }
 
     static Integer numeroSecreto() {
-        int dificuldadeFacil = 50;
-        int dificuldadeMedio = 100;
-        int dificuldadeDificil = 500;
-
         switch (Dificuldade()) {
             case 1:
-                int numeroFacil = random.nextInt((dificuldadeFacil) + 1);
+                int numeroFacil = random.nextInt((50) + 1);
                 return numeroFacil;
             case 2:
-                int numeroMedio = random.nextInt((dificuldadeMedio) + 1);
+                int numeroMedio = random.nextInt((100) + 1);
                 return numeroMedio;
             case 3:
-                int numeroDificil = random.nextInt((dificuldadeDificil) + 1);
+                int numeroDificil = random.nextInt((500) + 1);
                 return numeroDificil;
             default:
                 System.out.println("Erro na operação, tente um número válido");
@@ -63,27 +59,37 @@ public class CacaNumero {
     }
 
     static void Chutes(){
-        String numSecreto = Integer.toString(numeroSecreto());
+        int numSecretoInt = numeroSecreto();
+        String numSecreto = Integer.toString(numSecretoInt);
         while (true) {
             System.out.println("Digite seu chute: ");
             String chute = scanner.nextLine();
 
-            if (chutesLista.size() <= 10) {
+            if (chutesLista.size() <= 8) {
                 if (numSecreto.equals(chute)) {
-                    System.out.print("Parabéns você acertou! O número era " + numSecreto);
+                    System.out.println("Parabéns você acertou! O número era " + numSecreto);
+                    System.out.println("Pontos: " + Pontos);
                     break;
                 } else if (chute.equalsIgnoreCase("H")) {
                     System.out.println(chutesLista);
                 } else {
                     chutesLista.add(chute);
                     System.out.println("Que pena, você errou! Você tem mais " + (10 - chutesLista.size()) + " tentativas.");
+                    //MaiorMenor(numSecretoInt, chute);
                 }
             } else {
                 System.out.println("Suas tentativas acabaram, o número era: " + numSecreto);
+                System.out.println("Pontos: " + Pontos);
                 break;
             }
         }
     }
+
+//    static void MaiorMenor(int numSecretoInt, String chute) {
+//        int chutesInt = Integer.parseInt(chute);
+//
+//        }
+//    }
 
 
     public static void main(String[] args) {
