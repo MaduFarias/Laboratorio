@@ -11,47 +11,6 @@ public class CacaNumero {
     static int Pontos = 0;
     static int Rodadas = 0;
 
-    static Integer Dificuldade() {
-        while (true) {
-            System.out.println("""
-                    Dificuldade:
-                    
-                    [1] Fácil (número de 1 a 50)
-                    [2] Médio (número de 1 a 100)
-                    [3] Difícil (número de 1 a 500)
-                    """);
-
-            System.out.println("Você tem 10 tentativas para acertar");
-            System.out.println("Para acessar o histórico, digite H");
-            System.out.println("Informe o número da dificuldade: ");
-            int dificuldade = scanner.nextInt();
-            scanner.nextLine();
-
-            if (dificuldade < 1 || dificuldade > 3) {
-                System.out.println("Dificuldade inexistente, digite um número válido");
-            } else {
-                return dificuldade;
-            }
-        }
-    }
-
-    static Integer numeroSecreto() {
-        switch (Dificuldade()) {
-            case 1:
-                int numeroFacil = random.nextInt((50) + 1);
-                return numeroFacil;
-            case 2:
-                int numeroMedio = random.nextInt((100) + 1);
-                return numeroMedio;
-            case 3:
-                int numeroDificil = random.nextInt((500) + 1);
-                return numeroDificil;
-            default:
-                System.out.println("Erro na operação, tente um número válido");
-                return Dificuldade();
-        }
-    }
-
     static void Jogo() {
         System.out.println("""
                    _____                  _   _   __                          \s
@@ -81,6 +40,47 @@ public class CacaNumero {
         }
     }
 
+    static Integer Dificuldade() {
+        while (true) {
+            System.out.println("""
+                    Dificuldade:
+                    
+                    [1] Fácil (número de 1 a 50)
+                    [2] Médio (número de 1 a 100)
+                    [3] Difícil (número de 1 a 500)
+                    """);
+
+            System.out.println("Você tem 10 tentativas!");
+            System.out.println("Para acessar o histórico, digite H\n");
+            System.out.println("Informe o número da dificuldade: ");
+            int dificuldade = scanner.nextInt();
+            scanner.nextLine();
+
+            if (dificuldade < 1 || dificuldade > 3) {
+                System.out.println("Dificuldade inexistente, digite um número válido");
+            } else {
+                return dificuldade;
+            }
+        }
+    }
+
+    static Integer numeroSecreto() {
+        switch (Dificuldade()) {
+            case 1:
+                int numeroFacil = random.nextInt((50) + 1);
+                return numeroFacil;
+            case 2:
+                int numeroMedio = random.nextInt((100) + 1);
+                return numeroMedio;
+            case 3:
+                int numeroDificil = random.nextInt((500) + 1);
+                return numeroDificil;
+            default:
+                System.out.println("Erro na operação, tente um número válido");
+                return Dificuldade();
+        }
+    }
+
     static void Chutes() {
         int numSecretoInt = numeroSecreto();
         String numSecreto = Integer.toString(numSecretoInt);
@@ -88,12 +88,13 @@ public class CacaNumero {
             System.out.println("Digite seu chute: ");
             String chute = scanner.nextLine();
 
-            if (chutesLista.size() <= 8) {
+            if (chutesLista.size() < 10) {
                 if (numSecreto.equals(chute)) {
                     System.out.println("Parabéns você acertou! O número era " + numSecreto);
                     Pontos += 1;
                     Rodadas += 1;
                     System.out.println("Pontos: " + Pontos);
+                    chutesLista.clear();
                     break;
                 } else if (chute.equalsIgnoreCase("H")) {
                     System.out.println(chutesLista);
@@ -105,8 +106,10 @@ public class CacaNumero {
                 }
             } else {
                 System.out.println("Suas tentativas acabaram, o número era: " + numSecreto);
+                System.out.println("Seus chutes: " + chutesLista);
                 System.out.println("Pontos: " + Pontos);
                 Rodadas += 1;
+                chutesLista.clear();
                 break;
             }
         }
