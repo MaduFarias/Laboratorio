@@ -21,6 +21,8 @@ public class CacaNumero {
                     [3] Difícil (número de 1 a 500)
                     """);
 
+            System.out.println("Você tem 10 tentativas para acertar");
+            System.out.println("Para acessar o histórico, digite H");
             System.out.println("Informe o número da dificuldade: ");
             int dificuldade = scanner.nextInt();
             scanner.nextLine();
@@ -31,7 +33,6 @@ public class CacaNumero {
                 return dificuldade;
             }
         }
-
     }
 
     static Integer numeroSecreto() {
@@ -52,13 +53,35 @@ public class CacaNumero {
     }
 
     static void Jogo() {
-        System.out.println("Você tem 10 tentativas para acertar. Boa sorte!");
-        System.out.println("Para acessar o histórico, digite H");
-        Chutes();
-
+        System.out.println("""
+                   _____                  _   _   __                          \s
+                  / ____|                | \\ | | /_/                          \s
+                 | |     __ _  ___ __ _  |  \\| |_   _ _ __ ___   ___ _ __ ___ \s
+                 | |    / _` |/ __/ _` | | . ` | | | | '_ ` _ \\ / _ \\ '__/ _ \\\s
+                 | |___| (_| | (_| (_| | | |\\  | |_| | | | | | |  __/ | | (_) |
+                  \\_____\\__,_|\\___\\__,_| |_| \\_|\\__,_|_| |_| |_|\\___|_|  \\___/\s
+                               )_)                                            \s
+                                                                              \s
+        """);
+        while (true) {
+            Chutes();
+            System.out.println("Deseja continuar a jogar?");
+            System.out.println("[1] Sim");
+            System.out.println("[2] Não");
+            int continuar = scanner.nextInt();
+            scanner.nextLine();
+            if (continuar == 1) {
+                continue;
+            } else {
+                System.out.println("Obrigada por jogar! :> ");
+                System.out.println("Pontuação: " + Pontos);
+                System.out.println("Rodadas jogadas: " + Rodadas);
+                break;
+            }
+        }
     }
 
-    static void Chutes(){
+    static void Chutes() {
         int numSecretoInt = numeroSecreto();
         String numSecreto = Integer.toString(numSecretoInt);
         while (true) {
@@ -68,29 +91,35 @@ public class CacaNumero {
             if (chutesLista.size() <= 8) {
                 if (numSecreto.equals(chute)) {
                     System.out.println("Parabéns você acertou! O número era " + numSecreto);
+                    Pontos += 1;
+                    Rodadas += 1;
                     System.out.println("Pontos: " + Pontos);
                     break;
                 } else if (chute.equalsIgnoreCase("H")) {
                     System.out.println(chutesLista);
                 } else {
                     chutesLista.add(chute);
-                    System.out.println("Que pena, você errou! Você tem mais " + (10 - chutesLista.size()) + " tentativas.");
-                    //MaiorMenor(numSecretoInt, chute);
+                    System.out.println("Tentativa restantes: " + (10 - chutesLista.size()));
+                    System.out.println("Seu chute: " + chute);
+                    MaiorMenor(numSecretoInt, chute);
                 }
             } else {
                 System.out.println("Suas tentativas acabaram, o número era: " + numSecreto);
                 System.out.println("Pontos: " + Pontos);
+                Rodadas += 1;
                 break;
             }
         }
     }
 
-//    static void MaiorMenor(int numSecretoInt, String chute) {
-//        int chutesInt = Integer.parseInt(chute);
-//
-//        }
-//    }
-
+    static void MaiorMenor(int numSecretoInt, String chute) {
+        int chutesInt = Integer.parseInt(chute);
+        if (numSecretoInt > chutesInt) {
+            System.out.println("O número secreto é maior!");
+        } else if (numSecretoInt < chutesInt) {
+            System.out.println("O número secreto é menor!");
+        }
+    }
 
     public static void main(String[] args) {
         Jogo();
