@@ -1,0 +1,16 @@
+Calculadora
+
+4 operações básicas
+
+Main
+- Há um array com a string das operações (ig)
+- Um scanner pede a operação a ser executada
+- Um if trata as entradas
+- Digite o primeiro número
+
+- Colocar o switchcase para cada operação
+- Ler o segundo número
+- tratar divisão por zero (se for por zero, dar erro e encerrar)
+- Exibir resultado no formato: Resultado: 5.0 + 2.0 = 7.0
+- perguntar se o usuário deseja realizar uma nova operação
+
