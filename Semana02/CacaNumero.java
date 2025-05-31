@@ -11,6 +11,10 @@ public class CacaNumero {
     static int Pontos = 0;
     static int Rodadas = 0;
 
+    public static void main(String[] args) {
+        Jogo();
+    }
+
     static void Jogo() {
         System.out.println("""
                    _____                  _   _   __                          \s
@@ -124,7 +128,5 @@ public class CacaNumero {
         }
     }
 
-    public static void main(String[] args) {
-        Jogo();
-    }
+
 }
