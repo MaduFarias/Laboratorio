@@ -1,19 +1,22 @@
 Sist
-- escolher palavra secreta (deve ser sorteada de uma lista de palavras simples)
-- mostrar a palavra comm uma sequência de espaços vazios (----) (a cada tentativa mostrar como estará a palavra)
-- Se a letra existir substitui os espaços em que a contém
-- Se o chute não existir conta como um erro
-- Usuário advinhar todas as letras - venceu
-- Usuário errar 6 vezes - derrota
-- Mostrar numero de tentativas
-- Mostrar letras chutadas
-- Não permitir que o usuário chute a mesma palavra ou letra mais de uma vez
-- Permitir jogar novamente
+- escolher palavra secreta (deve ser sorteada de uma lista de palavras simples) ok
+- mostrar a palavra comm uma sequência de espaços vazios (----) (a cada tentativa mostrar como estará a palavra) ok
+
+- Se a letra existir substitui os espaços em que a contém ok
+
+- Se o chute não existir conta como um erro ok
+- Usuário advinhar todas as letras - venceu ok
+- Usuário errar 6 vezes - derrota ok
+- Mostrar numero de tentativas ok
+- Mostrar letras chutadas ok
+- Não permitir que o usuário chute a mesma palavra ou letra mais de uma vez ok
+
+- Permitir jogar novamente ok
 
 
 User
-- Chutar (letras ou palavras)
-- Até 6 chutes errados
+- Chutar (letras ou palavras) ok
+- Até 6 chutes errados ok
 
 
 Sistemas
