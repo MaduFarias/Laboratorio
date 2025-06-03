@@ -10,6 +10,7 @@ public class JogoForca {
     static String palavraShow;
 
     public static void main(String[] args) {
+        //main reduzir
         Scanner scanner = new Scanner(System.in);
         String resposta;
         Random random = new Random();
@@ -48,6 +49,7 @@ public class JogoForca {
         } while (resposta.equalsIgnoreCase("sim") || resposta.equalsIgnoreCase("s"));
         scanner.close();
     }
+
 
     static String PalavraSecreta(int categoria, int indice) {
 
@@ -111,6 +113,7 @@ public class JogoForca {
         String forca = "";
 
         while (true) {
+            // método separado
             switch (tentativas) {
                 case 6:
                     forca = """
@@ -204,14 +207,14 @@ public class JogoForca {
                     if (palavraSecreta.equals(chute)) {
                         System.out.println("Parabéns você acertou! a palavra era " + palavraShow);
                         break;
-                    } else {
-                        if (!palavras.contains(chute)) {
-                            System.out.println("Você errou!");
-                            palavras.add(chute);
-                            tentativas -= 1;
-                        }
                     }
-
+                    //após break não precisa else
+                    if (!palavras.contains(chute)) {
+                        System.out.println("Você errou!");
+                        palavras.add(chute);
+                        tentativas --;
+                    }
+                    continue;
                 } else {
                     if (palavraSecreta.contains(chute)) {
                         for (int i = 0; i < palavraSecreta.length(); i++) {
@@ -227,7 +230,7 @@ public class JogoForca {
                         if (!letras.contains(chute)) {
                             System.out.println("Você errou!");
                             letras.add(chute);
-                            tentativas -= 1;
+                            tentativas --;
                         }
                     }
                 }
