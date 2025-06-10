@@ -1,0 +1,161 @@
+[
+  {
+    "categoria": "Animais",
+    "itens": [
+      {
+        "resposta": "Pinguim",
+        "dicas": [
+          "Sou uma ave.",
+          "Não sei voar.",
+          "Vivo com muitos iguais a mim.",
+          "Ando de um jeito engraçado.",
+          "Sou bom nadador.",
+          "Gosto de comer peixe.",
+          "Minha barriga é branca.",
+          "Minhas costas são pretas.",
+          "Parece que estou de terno.",
+          "Gosto de lugares frios.",
+          "Sou um símbolo do gelo."
+        ]
+      },
+      {
+        "resposta": "Tigre",
+        "dicas:": [
+          "Sou um animal selvagem.",
+          "Gosto de viver sozinho.",
+          "Tenho garras.",
+          "Sou bom em caçar.",
+          "Tenho olhos grandes.",
+          "Corro rápido.",
+          "Sou um grande felino.",
+          "Tenho pelo laranja.",
+          "Tenho listras pretas.",
+          "Pareço com um gato.",
+          "Sou o maior gato selvagem."
+        ]
+      },
+      {
+        "resposta": "Elefante",
+        "dicas": [
+          "Sou um animal muito grande.",
+          "Vivo em lugares quentes.",
+          "Tenho pele grossa.",
+          "Gosto de andar com outros iguais a mim.",
+          "Posso viver muitos anos.",
+          "Gosto de tomar banho de lama.",
+          "Tenho orelhas grandes.",
+          "Tenho presas.",
+          "Tenho tromba.",
+          "Sou cinza.",
+          "Sou o maior animal terrestre."
+        ]
+      }
+    ]
+  },
+  {
+    "categoria": "Países",
+    "itens": [
+      {
+        "resposta": "Japão",
+        "dicas": [
+          "Sou um país formado por várias ilhas.",
+          "Tenho muitas montanhas e poucos espaços planos.",
+          "Minha população é muito organizada.",
+          "Tenho uma mistura forte de tradição e tecnologia.",
+          "Meus alunos usam uniforme na escola.",
+          "Sou conhecido pela pontualidade dos meus trens.",
+          "Celebramos a floração de uma árvore muito famosa.",
+          "Tenho muitos festivais com roupas típicas coloridas.",
+          "Minhas cidades são muito limpas.",
+          "Meus desenhos animados fazem sucesso no mundo inteiro.",
+          "Tenho uma culinária famosa com arroz, peixe e algas."
+        ]
+      },
+      {
+        "resposta": "Brasil",
+        "dicas": [
+          "Estou localizado em um continente americano.",
+          "Tenho muitas florestas e rios grandes.",
+          "Meu clima varia bastante dependendo da região.",
+          "Sou conhecido pela diversidade cultural.",
+          "Tenho uma mistura de influências indígenas, europeias e africanas.",
+          "Meu povo gosta muito de futebol.",
+          "Tenho cidades grandes e agitadas.",
+          "Minhas festas populares duram vários dias.",
+          "Sou famoso por música animada e dança.",
+          "Minha bandeira tem as cores verde, amarelo, azul e branco.",
+          "Tenho um dos maiores biomas tropicais do mundo."
+        ]
+      },
+      {
+        "resposta": "Egito",
+        "dicas": [
+          "Sou um país com muita história antiga.",
+          "Tenho um rio muito importante que atravessa meu território.",
+          "Minha cultura influenciou muitas civilizações depois de mim.",
+          "Sou conhecido por construções impressionantes feitas com pedras.",
+          "Minha capital é uma das maiores cidades da África.",
+          "Tenho desertos extensos e clima quente.",
+          "Sou famoso por símbolos que parecem desenhos.",
+          "Templo e tumbas são parte da minha herança.",
+          "Tenho um monumento com corpo de leão e cabeça humana.",
+          "Meu povo usava roupas feitas de linho.",
+          "Minha civilização construiu pirâmides."
+        ]
+      }
+    ]
+  },
+  {
+    "categoria": "Jogos",
+    "itens": [
+      {
+        "resposta": "Minecraft",
+        "dicas": [
+          "Sou um jogo muito popular.",
+          "Posso ser jogado em várias plataformas.",
+          "Meu visual é simples e pixelado.",
+          "Posso explorar cavernas e florestas.",
+          "Os jogadores podem construir o que quiserem.",
+          "Posso jogar sozinho ou com amigos.",
+          "É possível minerar recursos como pedra e minério.",
+          "Tenho modos como sobrevivência e criativo.",
+          "Sou um jogo de construção e aventura.",
+          "Tenho criaturas chamadas zumbis e esqueletos.",
+          "Meu mundo é feito de blocos."
+        ]
+      },
+      {
+        "resposta": "Sonic",
+        "dicas": [
+          "Sou um jogo clássico de plataforma.",
+          "Meu primeiro lançamento foi nos anos 90.",
+          "Meu visual mistura velocidade e ação.",
+          "Tenho várias versões para diferentes consoles.",
+          "Meu estilo é diferente de outros jogos de plataforma.",
+          "Já inspirei desenhos animados e filmes.",
+          "Sou conhecido pela velocidade e desafios.",
+          "Tenho fases rápidas e cheias de loopings.",
+          "Os jogadores coletam anéis durante a jornada.",
+          "Tenho um vilão cientista chamado Dr. Robotnik.",
+          "Meu protagonista é um ouriço azul."
+        ]
+      },
+      {
+        "resposta": "The Sims",
+        "dicas": [
+          "Sou conhecido por permitir liberdade total de criação.",
+          "Sou um jogo onde você controla personagens virtuais.",
+          "Dá para escolher roupas, cabelos e personalidades.",
+          "Meus personagens falam em uma língua inventada.",
+          "A morte pode acontecer de formas inesperadas.",
+          "Você pode construir e decorar casas do zero.",
+          "É possível formar famílias e ter filhos.",
+          "Alguns jogadores gostam de remover portas e escadas.",
+          "Os personagens podem trabalhar, comer e dormir.",
+          "Os personagens têm necessidades como fome e diversão.",
+          "Sou um jogo de simulação de vida muito famoso."
+        ]
+      }
+    ]
+  }
+]

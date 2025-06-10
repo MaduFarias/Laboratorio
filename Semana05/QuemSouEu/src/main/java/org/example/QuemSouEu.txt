@@ -1,0 +1,25 @@
+1. Apresentar menu inicial (Jogar/AJuda/Ver leadboard/Sair)
+
+2. Ao escolher jogo
+- Sortear uma elemento (não se repete na mesma sessão)
+- Exibir categoria (ex: animais)
+
+3. Revela 11 dicas
+- Dicas e dados são guardadas em um json
+- o usuário pode tentar advinha a qualquer momento
+- Ao errar ganha proxima dica
+- Se digitar desistir, zera e volta ao menu
+
+4. Pontos
+. 100 pontos para acerto sem dicas
+. - 10 cada dica usada
+. -1 ponto por minuto gasto desde a primeira dica até o acerto
+
+5. Casa todas as dicas sejam usadas, exibe mensagem de derrota
+
+6. Se o usuário vencer e a pontuação estiver entre as 10 melhores, peça para incluir no leaderboard
+
+7. o leaderboar guarda os 10 maiores pontuações
+- o placar é guardado em um json
+
+8. Permirtir jogar novamente sem fechar o programa
