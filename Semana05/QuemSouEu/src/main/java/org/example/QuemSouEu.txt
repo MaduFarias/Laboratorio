@@ -1,7 +1,9 @@
 1. Apresentar menu inicial (Jogar/AJuda/Ver leadboard/Sair)
+ - Loop externo ok
+
 
 2. Ao escolher jogo
-- Sortear uma elemento (não se repete na mesma sessão)
+- Sortear uma elemento (não se repete o mesmo elemento na mesma sessão)
 - Exibir categoria (ex: animais)
 
 3. Revela 11 dicas
