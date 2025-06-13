@@ -3,42 +3,43 @@ package org.example;
 import java.text.Normalizer;
 import java.util.Scanner;
 import java.util.Random;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class QuemSouEu {
-    static Scanner scanner = new Scanner(System.in);
-    static Random random = new Random();
+    public static Scanner scanner = new Scanner(System.in);
+    public static Random random = new Random();
     static Menu menu = new Menu();
+    static Jogo jogo = new Jogo();
     static String input;
 
+
     public static void main(String[] args) throws Exception {
-        String json = new String(Files.readAllBytes(Paths.get("src/main/Dicas.json")));
-        JSONArray elementos = new JSONArray(json);
-        //Jogo(elementos);
         IniciarMenu();
     }
 
-    static void IniciarMenu () {
+    static void IniciarMenu () throws Exception {
         do {
             menu.Menu();
-            input = Normalizer.normalize(scanner.nextLine().trim().toLowerCase(), Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
-            if (SwitchMenu(input) == 1) {
-                input = scanner.nextLine();
-                menu.OperacaoEnter(input);
-            } else if (SwitchMenu(input) == 2) {
-                input = Normalizer.normalize(scanner.nextLine().trim().toLowerCase(), Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
-                if (!(input.equals("não") || input.equals("2") || input.equals("sim") || input.equals("1"))) {
-                    menu.OperacaoInvalida(input);
-                }
-            }
+            VerificarMenuInput();
         } while (!(input.equals("sim") || input.equals("1")));
     }
 
-    static int SwitchMenu(String opcao) {
-        switch (opcao) {
+    static void VerificarMenuInput() throws Exception {
+        input = Normalizer.normalize(scanner.nextLine().trim().toLowerCase(), Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        if (SwitchMenu(input) == 1) {
+            menu.OperacaoEnter();
+        } else if (SwitchMenu(input) == 2) {
+            input = Normalizer.normalize(scanner.nextLine().trim().toLowerCase(), Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+            if (!(input.equals("nao") || input.equals("2") || input.equals("sim") || input.equals("1"))) {
+                menu.OperacaoInvalida();
+            }
+        } else {
+            jogo.IniciarJogo();
+            input = "";
+        }
+    }
+
+    static int SwitchMenu(String input) throws Exception {
+        switch (input) {
             case "1", "jogar" -> {
                 return 0;
             }
@@ -54,17 +55,12 @@ public class QuemSouEu {
                 return 2;
             }
             default -> {
-                menu.OperacaoInvalida(input);
+                menu.OperacaoInvalida();
                 return 0;
             }
         }
     }
 
-
-    static void Jogo(JSONArray elementos) throws Exception {
-        Jogo jogo = new Jogo();
-        jogo.IniciarJogo();
-    }
 
 
 

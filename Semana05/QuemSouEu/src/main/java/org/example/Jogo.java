@@ -2,34 +2,39 @@ package org.example;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.Normalizer;
 import java.util.Arrays;
 import java.util.ArrayList;
 import org.json.JSONArray;
-import org.json.JSONObject;
-import java.util.Random;
+
+import static org.example.QuemSouEu.scanner;
+import static org.example.QuemSouEu.random;
 
 public class Jogo {
-    String categoria;
-    String dica;
-    String respostas;
-    int elementosTamanho;
-    JSONArray elementos;
+    String dica, resposta, input;
+    int elementosTamanho, indexSorteio, indexCategoria, i;
     ArrayList<Integer> elementosArray = new ArrayList<>(11);
-    int indexSorteio;
-    int indexCategoria;
+
+    JSONArray elementos;
+
     Menu menu = new Menu();
-
-
-    static Random random = new Random();
 
     void JSON () throws Exception {
         String json = new String(Files.readAllBytes(Paths.get("src/main/Dicas.json")));
         elementos = new JSONArray(json);
     }
 
+    void IniciarJogo() throws Exception {
+        JSON();
+        indexCategoria = Sortear();
+        menu.categoria = elementos.getJSONObject(indexCategoria).getString("categoria");
+        menu.Categoria();
+        Dicas(indexCategoria);
+    }
+
     int Sortear() throws Exception {
         elementosTamanho = elementos.length();
-        if (elementosArray.size() > 0 && elementosArray.size() <= 11) {
+        if ((!elementosArray.isEmpty()) && elementosArray.size() <= 11) {
             do {
                 indexSorteio = random.nextInt(elementosTamanho);
             } while (Arrays.asList(elementosArray).contains(indexSorteio));
@@ -40,15 +45,29 @@ public class Jogo {
         return indexSorteio;
     }
 
-    void IniciarJogo(/*boolean operacaoEnter*/) throws Exception {
-        JSON();
-        //do {
-            indexCategoria = Sortear();
-            menu.categoria = elementos.getJSONObject(indexCategoria).getString("categoria");
-            menu.Categoria();
-            //if (operacaoEnter) {
-            //}
-        //} while ((elementosArray.size() < elementosTamanho));
+    void Dicas(int indexCategoria) throws Exception {
+        menu.pontos = 0;
+        resposta = menu.resposta = elementos.getJSONObject(indexCategoria).getString("resposta");
+        i = menu.i = 0;
+        for (; i < 12; i++) {
+            dica = menu.dica = elementos.getJSONObject(indexCategoria).getJSONArray("dicas").getString(i);
+            menu.i = i;
+            menu.Dicas();
+            input = Normalizer.normalize(scanner.nextLine().trim().toLowerCase(), Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+            if (input.equals("desistir")) {
+                menu.DesistirString();
+                break;
+            } else {
+                if (input.equals(resposta)) {
+                    menu.Correto();
+                    break;
+                } else {
+                    menu.Incorreto();
+                    if (menu.desistir) {
+                        break;
+                    }
+                }
+            }
+        }
     }
-
 }

@@ -1,12 +1,13 @@
 package org.example;
 
+import java.text.Normalizer;
+
+import static org.example.QuemSouEu.scanner;
+
 public class Menu {
-    String categoria;
-    int i;
-    String dica;
-    String resposta;
-    String pontos;
-    String operacaoinput;
+    String categoria, dica, resposta, input;
+    int i, pontos;
+    boolean desistir;
 
     static void Menu() {
         System.out.print("""
@@ -51,17 +52,6 @@ public class Menu {
                 """);
     }
 
-    static void OperacaoInvalidaString() {
-        System.out.print("""
-                +-----------------------------+
-                |         OPÇÃO INVÁLIDA      |
-                +-----------------------------+
-                Por favor, escolha uma opção válida.
-                
-                Pressione ENTER para voltar ao menu.
-                """);
-    }
-
     void Categoria() {
         System.out.printf("""
                 +-----------------------------+
@@ -72,29 +62,47 @@ public class Menu {
                 Pressione ENTER para ver a dica 1.
                 
                 \n""", this.categoria);
+        OperacaoEnter();
     }
 
     void Dicas() {
-        System.out.printf("""
+        if (i + 1 < 11) {
+            System.out.printf("""
+                    +-----------------------------+
+                    |           DICA %s            |
+                    +-----------------------------+
+                    %s
+                    
+                    Digite sua resposta ou
+                    pressione ENTER para próxima:
+                    >
+                    """, (i + 1), dica);
+        } else {
+            System.out.printf("""
                 +-----------------------------+
-                |           DICA %s            |
+                |         FIM DE JOGO         |
                 +-----------------------------+
-                %s
+                Dica %s: %s
                 
-                Digite sua resposta ou
-                pressione ENTER para próxima:
+                Digite sua resposta final:
                 >
-                """,(i + 1), dica);
+                """, (i + 1), dica);
+        }
     }
 
     void Incorreto() {
         if ((i + 1) == 11) {
-            System.out.println("""
+            System.out.printf("""
                     ❌ Resposta incorreta!
-                    (ou digite "desistir" para sair)
                     
-                    Pressione ENTER para continuar.
-                    """);
+                    💀 Fim de jogo!
+                    Resposta certa: %s
+                    Você usou todas as dicas.
+                    Pontuação: %s pts
+                    
+                    Pressione ENTER para menu.
+                    """, resposta, pontos);
+            OperacaoEnter();
         } else {
             System.out.printf("""
                     ❌ Resposta incorreta!
@@ -102,7 +110,9 @@ public class Menu {
                     
                     Pressione ENTER para dica %s.
                     """, (i + 2));
+            OperacaoEnterDesistir();
         }
+
     }
 
     void Correto() {
@@ -115,12 +125,43 @@ public class Menu {
                 
                 Pressione ENTER para menu.
                 """, resposta, i, pontos);
+        OperacaoEnter();
+
     }
 
-    void OperacaoEnter (String input) {
+    void DesistirString() {
+        System.out.printf("""
+                💀 Você desistiu!
+                Resposta certa: %s
+                Pontuação: %s pts
+                
+                Pressione ENTER para menu.
+                """, resposta, pontos);
+        OperacaoEnter();
+    }
+
+    boolean OperacaoEnterDesistir(){
+        input = scanner.nextLine();
+        if (input.equals("desistir")) {
+            DesistirString();
+            desistir = true;
+        } else {
+            while (true) {
+                if (input.isEmpty()) {
+                    break;
+                } else {
+                    OperacaoInvalidaString();
+                }
+            }
+            desistir = false;
+        }
+        return desistir;
+    }
+
+    void OperacaoEnter () {
         while (true) {
-            operacaoinput = input;
-            if (operacaoinput.isEmpty()) {
+            input = scanner.nextLine();
+            if (input.isEmpty()) {
                 break;
             } else {
                 OperacaoInvalidaString();
@@ -128,15 +169,26 @@ public class Menu {
         }
     }
 
-    void OperacaoInvalida(String input) {
+    void OperacaoInvalida() {
         OperacaoInvalidaString();
         while (true) {
-            operacaoinput = input;
-            if (operacaoinput.isEmpty()) {
+            input = Normalizer.normalize(scanner.nextLine().trim().toLowerCase(), Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+            if (input.isEmpty()) {
                 break;
             } else {
                 OperacaoInvalidaString();
             }
         }
+    }
+
+    static void OperacaoInvalidaString() {
+        System.out.print("""
+                +-----------------------------+
+                |         OPÇÃO INVÁLIDA      |
+                +-----------------------------+
+                Por favor, escolha uma opção válida.
+                
+                Pressione ENTER para voltar ao menu.
+                """);
     }
 }
