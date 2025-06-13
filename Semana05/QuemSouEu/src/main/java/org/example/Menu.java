@@ -6,6 +6,7 @@ public class Menu {
     String dica;
     String resposta;
     String pontos;
+    String operacaoinput;
 
     static void Menu() {
         System.out.print("""
@@ -114,5 +115,28 @@ public class Menu {
                 
                 Pressione ENTER para menu.
                 """, resposta, i, pontos);
+    }
+
+    void OperacaoEnter (String input) {
+        while (true) {
+            operacaoinput = input;
+            if (operacaoinput.isEmpty()) {
+                break;
+            } else {
+                OperacaoInvalidaString();
+            }
+        }
+    }
+
+    void OperacaoInvalida(String input) {
+        OperacaoInvalidaString();
+        while (true) {
+            operacaoinput = input;
+            if (operacaoinput.isEmpty()) {
+                break;
+            } else {
+                OperacaoInvalidaString();
+            }
+        }
     }
 }

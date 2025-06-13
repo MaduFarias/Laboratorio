@@ -17,6 +17,7 @@ public class QuemSouEu {
     public static void main(String[] args) throws Exception {
         String json = new String(Files.readAllBytes(Paths.get("src/main/Dicas.json")));
         JSONArray elementos = new JSONArray(json);
+        //Jogo(elementos);
         IniciarMenu();
     }
 
@@ -26,52 +27,43 @@ public class QuemSouEu {
             input = Normalizer.normalize(scanner.nextLine().trim().toLowerCase(), Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
             if (SwitchMenu(input) == 1) {
                 input = scanner.nextLine();
-                if (OperacaoEnter(input)) {
-                    continue;
-                }
+                menu.OperacaoEnter(input);
             } else if (SwitchMenu(input) == 2) {
-                input = scanner.nextLine();
-                continue;
+                input = Normalizer.normalize(scanner.nextLine().trim().toLowerCase(), Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+                if (!(input.equals("não") || input.equals("2") || input.equals("sim") || input.equals("1"))) {
+                    menu.OperacaoInvalida(input);
+                }
             }
         } while (!(input.equals("sim") || input.equals("1")));
     }
 
     static int SwitchMenu(String opcao) {
         switch (opcao) {
-            case "1":
-            case "jogar":
+            case "1", "jogar" -> {
                 return 0;
-            case "2":
-            case "ajuda":
+            }
+            case "2", "ajuda" -> {
                 menu.Ajuda();
                 return 1;
-            case "3":
-            case "leaderboard":
+            }
+            case "3", "leaderboard" -> {
                 return 1;
-            case "4":
-            case "sair":
+            }
+            case "4", "sair" -> {
                 menu.Sair();
                 return 2;
-            default:
-                OperacaoInvalida(opcao);
+            }
+            default -> {
+                menu.OperacaoInvalida(input);
                 return 0;
+            }
         }
     }
 
-    static boolean OperacaoEnter (String input) {
-        if (input.isEmpty()) {
-            return true;
-        } else {
-            OperacaoInvalida(input);
-            return true;
-        }
-    }
 
-    static void OperacaoInvalida(String input) {
-        do {
-            menu.OperacaoInvalidaString();
-            input = scanner.nextLine();
-        } while (!(input.isEmpty()));
+    static void Jogo(JSONArray elementos) throws Exception {
+        Jogo jogo = new Jogo();
+        jogo.IniciarJogo();
     }
 
 
@@ -82,17 +74,6 @@ public class QuemSouEu {
         String categoria = elementos.getJSONObject(0).getString("categoria");
         JSONArray dicasTodas = elementos.getJSONObject(0).getJSONArray("dicas");
         String dicax = elementos.getJSONObject(0).getJSONArray("dicas").getString(0);
-    }*/
-
-    /*int Sorteio () {
-        jogo.elementosTamanho = elementos.length();
-        String[] elementosArray;
-        int indexSorteio = rand.nextInt(elementosTamanho)
-            if (!(elementosArray.include(indexSorteio)) {
-                return indexSorteio;
-            } else {
-                break;
-            }
     }
 
     StartGame() {
@@ -104,13 +85,13 @@ public class QuemSouEu {
             if (OperacaoEnter(input)) {
                 continue;
             }
-            for (int = i, i < 11, ++i) {
+            for (int = i, i < 11, i++) {
                 menu.i = i
                 menu.dica = elementos.getJSONObject(indexCategoria).getJSONArray("dicas").getString(i);
                 jogo.resposta = elementos.getJSONObject(indexCategoria).getString("resposta");
                 menu.Dicas();
                 input = scanner.nextLine();
-                if (!(input != resposta) {
+                if ((input != resposta) {
                     menu.Incorreto();
                     input = scanner.nextLine();
                     if (OperacaoEnter(input)) {
