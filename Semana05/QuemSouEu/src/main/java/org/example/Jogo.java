@@ -6,6 +6,7 @@ import java.text.Normalizer;
 import java.util.Arrays;
 import java.util.ArrayList;
 import org.json.JSONArray;
+import java.time.Instant;
 
 import static org.example.QuemSouEu.scanner;
 import static org.example.QuemSouEu.random;
@@ -18,10 +19,24 @@ public class Jogo {
     JSONArray elementos;
 
     Menu menu = new Menu();
+    Pontos pontuacao = new Pontos();
 
     void JSON () throws Exception {
         String json = new String(Files.readAllBytes(Paths.get("src/main/Dicas.json")));
         elementos = new JSONArray(json);
+    }
+
+    int Sortear() {
+        elementosTamanho = elementos.length();
+        if ((!elementosArray.isEmpty()) && elementosArray.size() <= 11) {
+            do {
+                indexSorteio = random.nextInt(elementosTamanho);
+            } while (elementosArray.contains(indexSorteio));
+        } else {
+            indexSorteio = random.nextInt(elementosTamanho);
+            elementosArray.add(indexSorteio);
+        }
+        return indexSorteio;
     }
 
     void IniciarJogo() throws Exception {
@@ -30,26 +45,16 @@ public class Jogo {
         menu.categoria = elementos.getJSONObject(indexCategoria).getString("categoria");
         menu.Categoria();
         Dicas(indexCategoria);
+        pontuacao.VerificarPlacar();
     }
 
-    int Sortear() throws Exception {
-        elementosTamanho = elementos.length();
-        if ((!elementosArray.isEmpty()) && elementosArray.size() <= 11) {
-            do {
-                indexSorteio = random.nextInt(elementosTamanho);
-            } while (Arrays.asList(elementosArray).contains(indexSorteio));
-        } else {
-            indexSorteio = random.nextInt(elementosTamanho);
-            elementosArray.add(indexSorteio);
-        }
-        return indexSorteio;
-    }
-
-    void Dicas(int indexCategoria) throws Exception {
-        menu.pontos = 0;
+    void Dicas(int indexCategoria) {
+        menu.pontos = pontuacao.pontos = 0;
         resposta = menu.resposta = elementos.getJSONObject(indexCategoria).getString("resposta");
         i = menu.i = 0;
-        for (; i < 12; i++) {
+        pontuacao.inicioJogo = Instant.now();
+
+        for (; i < 11; i++) {
             dica = menu.dica = elementos.getJSONObject(indexCategoria).getJSONArray("dicas").getString(i);
             menu.i = i;
             menu.Dicas();
@@ -57,8 +62,12 @@ public class Jogo {
             if (input.equals("desistir")) {
                 menu.DesistirString();
                 break;
+            } else if (input.isEmpty() && (i < 10)) {
             } else {
                 if (input.equals(resposta)) {
+                    pontuacao.fimJogo = Instant.now();
+                    pontuacao.pontos = (100 - (i * 10));
+                    pontuacao.pontos = menu.pontos = pontuacao.PontuacaoTratamento();
                     menu.Correto();
                     break;
                 } else {

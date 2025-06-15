@@ -5,11 +5,13 @@ import java.text.Normalizer;
 import static org.example.QuemSouEu.scanner;
 
 public class Menu {
-    String categoria, dica, resposta, input;
+    String categoria, dica, resposta, input, nome;
     int i, pontos;
     boolean desistir;
 
-    static void Menu() {
+    Pontos pontuacao = new Pontos();
+
+    static void MenuString() {
         System.out.print("""
                 +-----------------------------+
                 |        QUEM SOU EU?         |
@@ -35,7 +37,6 @@ public class Menu {
                 - Digite "desistir" para encerrar o desafio atual.
                 
                 Pressione ENTER para voltar ao menu.
-                
                 """);
     }
 
@@ -91,7 +92,7 @@ public class Menu {
     }
 
     void Incorreto() {
-        if ((i + 1) == 11) {
+        if ((i == 10)) {
             System.out.printf("""
                     ❌ Resposta incorreta!
                     
@@ -109,8 +110,8 @@ public class Menu {
                     (ou digite "desistir" para sair)
                     
                     Pressione ENTER para dica %s.
-                    """, (i + 2));
-            OperacaoEnterDesistir();
+                    """, (i + 1));
+            OperacaoDesistir();
         }
 
     }
@@ -124,9 +125,44 @@ public class Menu {
                 Pontuação: %s pts
                 
                 Pressione ENTER para menu.
-                """, resposta, i, pontos);
+                """, resposta, (i), pontos);
         OperacaoEnter();
 
+    }
+
+    void PontuacaoNova() {
+        System.out.print("""
+                +-----------------------------+
+                |     NOVA PONTUAÇÃO ALTA!    |
+                +-----------------------------+
+                Parabéns! Você ficou no top 10.
+                
+                Digite seu nome (máx 10 caracteres):
+                >
+                """);
+        nome = scanner.nextLine();
+        if (nome.length() > 10) {
+            nome = nome.substring(0,10);
+        }
+        System.out.println("""
+                Pontuação salva com sucesso!
+                
+                Pressione ENTER para voltar ao menu.
+                """);
+        OperacaoEnter();
+    }
+
+    void Leaderboard() throws Exception {
+        pontuacao.JSON();
+        System.out.print("""
+                +-----------------------------+
+                |         LEADERBOARD         |
+                +-----------------------------+
+                """);
+        pontuacao.LeaderboardPontuacao();
+        System.out.print("""
+                Pressione ENTER para voltar.
+                """);
     }
 
     void DesistirString() {
@@ -140,7 +176,7 @@ public class Menu {
         OperacaoEnter();
     }
 
-    boolean OperacaoEnterDesistir(){
+    boolean OperacaoDesistir(){
         input = scanner.nextLine();
         if (input.equals("desistir")) {
             DesistirString();

@@ -3,25 +3,25 @@
 
 
 2. Ao escolher jogo
-- Sortear uma elemento (não se repete o mesmo elemento na mesma sessão)
-- Exibir categoria (ex: animais)
+- Sortear uma elemento (não se repete o mesmo elemento na mesma sessão) ok
+- Exibir categoria (ex: animais) ok
 
 3. Revela 11 dicas
-- Dicas e dados são guardadas em um json
-- o usuário pode tentar advinha a qualquer momento
-- Ao errar ganha proxima dica
-- Se digitar desistir, zera e volta ao menu
+- Dicas e dados são guardadas em um json ok
+- o usuário pode tentar advinha a qualquer momento ok
+- Ao errar ganha proxima dica ok
+- Se digitar desistir, zera e volta ao menu ok
 
 4. Pontos
-. 100 pontos para acerto sem dicas
-. - 10 cada dica usada
-. -1 ponto por minuto gasto desde a primeira dica até o acerto
+. 100 pontos para acerto sem dicas ok
+. - 10 cada dica usada ok
+. -1 ponto por minuto gasto desde a primeira dica até o acerto ok
 
-5. Casa todas as dicas sejam usadas, exibe mensagem de derrota
+5. Casa todas as dicas sejam usadas, exibe mensagem de derrota ok
 
-6. Se o usuário vencer e a pontuação estiver entre as 10 melhores, peça para incluir no leaderboard
+6. Se o usuário vencer e a pontuação estiver entre as 10 melhores, peça para incluir no leaderboard ok
 
 7. o leaderboar guarda os 10 maiores pontuações
-- o placar é guardado em um json
+- o placar é guardado em um json ok
 
-8. Permirtir jogar novamente sem fechar o programa
+8. Permirtir jogar novamente sem fechar o programa ok
