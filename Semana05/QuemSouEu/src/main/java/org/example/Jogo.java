@@ -3,7 +3,6 @@ package org.example;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.Normalizer;
-import java.util.Arrays;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import java.time.Instant;
@@ -39,9 +38,9 @@ public class Jogo {
         return indexSorteio;
     }
 
-    void IniciarJogo() throws Exception {
+    void IniciarJogo(int sorteio) throws Exception {
         JSON();
-        indexCategoria = Sortear();
+        indexCategoria = sorteio;
         menu.categoria = elementos.getJSONObject(indexCategoria).getString("categoria");
         menu.Categoria();
         Dicas(indexCategoria);
@@ -62,7 +61,6 @@ public class Jogo {
             if (input.equals("desistir")) {
                 menu.DesistirString();
                 break;
-            } else if (input.isEmpty() && (i < 10)) {
             } else {
                 if (input.equals(resposta)) {
                     pontuacao.fimJogo = Instant.now();

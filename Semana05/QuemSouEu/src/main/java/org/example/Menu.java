@@ -1,7 +1,5 @@
 package org.example;
 
-import java.text.Normalizer;
-
 import static org.example.QuemSouEu.scanner;
 
 public class Menu {
@@ -125,7 +123,7 @@ public class Menu {
                 Pontuação: %s pts
                 
                 Pressione ENTER para menu.
-                """, resposta, (i), pontos);
+                """, resposta, i, pontos);
         OperacaoEnter();
 
     }
@@ -208,7 +206,7 @@ public class Menu {
     void OperacaoInvalida() {
         OperacaoInvalidaString();
         while (true) {
-            input = Normalizer.normalize(scanner.nextLine().trim().toLowerCase(), Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+            input = scanner.nextLine();
             if (input.isEmpty()) {
                 break;
             } else {

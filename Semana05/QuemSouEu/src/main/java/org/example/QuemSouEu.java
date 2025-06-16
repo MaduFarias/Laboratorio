@@ -22,11 +22,11 @@ public class QuemSouEu {
         do {
             sorteio = jogo.Sortear();
             menu.MenuString();
-            VerificarSistemaInput();
+            VerificarSistemaInput(sorteio);
         } while (!(input.equals("sim") || input.equals("1")) || (jogo.elementosArray.size() == jogo.elementosTamanho));
     }
 
-    static void VerificarSistemaInput() throws Exception {
+    static void VerificarSistemaInput(int sorteio) throws Exception {
         input = Normalizer.normalize(scanner.nextLine().trim().toLowerCase(), Normalizer.Form.NFD).replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
         if (SwitchSistema(input) == 1) {
             menu.OperacaoEnter();
@@ -36,8 +36,8 @@ public class QuemSouEu {
             if (!(input.equals("nao") || input.equals("2") || input.equals("sim") || input.equals("1"))) {
                 menu.OperacaoInvalida();
             }
-        } else {
-            jogo.IniciarJogo();
+        } else if (SwitchSistema(input) == 0) {
+            jogo.IniciarJogo(sorteio);
             input = "";
         }
 
@@ -62,7 +62,7 @@ public class QuemSouEu {
             }
             default -> {
                 menu.OperacaoInvalida();
-                return 0;
+                return 3;
             }
         }
     }

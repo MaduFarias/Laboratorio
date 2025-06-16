@@ -25,6 +25,10 @@
   },
   {
     "pontos": 70,
+    "nome": "Jurandi"
+  },
+  {
+    "pontos": 70,
     "nome": "Lucas"
   },
   {
@@ -34,9 +38,5 @@
   {
     "pontos": 57,
     "nome": "Afonso"
-  },
-  {
-    "pontos": 50,
-    "nome": "Anna"
   }
 ]
