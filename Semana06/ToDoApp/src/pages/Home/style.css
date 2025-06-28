@@ -1,0 +1,164 @@
+/*Navegação*/
+.area-navegacao {
+  height: 56px;
+  border-bottom: 1px solid #dfdfdf;
+  display: flex;
+  align-items: center;
+}
+
+.navegacao-elementos {
+  margin-left: 56px;
+  margin-right: 40px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.icones {
+  display: flex;
+  gap: 7px;
+}
+
+.horario {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+/*=================================*/
+
+/*Usuario*/
+.area-usuario {
+  display: flex;
+  margin-top: 45px;
+  margin-left: 56px;
+  margin-right: 56px;
+  margin-bottom: 20px;
+  height: 70px;
+  align-items: center;
+}
+
+.imagem-perfil {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+h2 {
+  margin-left: 1rem;
+  font-size: 20px;
+  color: rgb(73, 73, 73);
+  font-family: sans-serif;
+}
+
+/*=================================*/
+
+/*Data*/
+.area-botaoData {
+  margin-top: 46px;
+  margin-left: 323px;
+  height: 32px;
+  width: 32px;
+  display: flex;
+}
+
+.area-botaoData svg {
+  height: 27px;
+  width: 27px;
+}
+
+/*=================================*/
+
+/*Tarefas*/
+.area-tarefas {
+  margin-top: 33px;
+  max-height: 601px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.area-tarefas::-webkit-scrollbar {
+  width: 0px;
+}
+
+.area-novaTarefa {
+  margin: 0 auto;
+  width: 311px;
+  min-height: 45px;
+  background-color: #d9d9d9; /* cinza claro */
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  gap: 10px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.area-novaTarefa input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: #121212;
+}
+
+.botaoCriar {
+  background-color: #999999; /* botão branco */
+  color: #121212; /* cor do símbolo de + */
+  border: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%; /* deixa redondo */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/*Animação botão*/
+.botaoCriar:hover {
+  transform: scale(1.1);
+  background-color: #919191;
+}
+
+.tarefa {
+  width: 311px;
+  height: 45px;
+  background-color: #d9d9d9; /* cinza claro */
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  gap: 10px;
+  border-radius: 20px;
+  margin: 18px;
+}
+
+.botaoX {
+  background: transparent;
+  border: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.botaoX:hover {
+  transform: scale(1.2);
+}
+
+/* Responsividade */
+@media (max-width: 420px) {
+  .area-celular {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
