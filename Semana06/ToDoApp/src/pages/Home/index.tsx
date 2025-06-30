@@ -5,11 +5,15 @@ import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { faSignal } from "@fortawesome/free-solid-svg-icons";
 import { faWifi } from "@fortawesome/free-solid-svg-icons";
 import { faBatteryFull } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import download from "../../assets/download.jfif";
 
 function Home() {
   const [tarefa, setTarefa] = useState("");
-  const [tarefas, setTarefas] = useState<string[]>([]);
+  const [tarefas, setTarefas] = useState<{ texto: string; checked: boolean }[]>(
+    []
+  );
 
   /* Carregar dados Storage */
   useEffect(() => {
@@ -27,7 +31,7 @@ function Home() {
   /*adicionar nova tarefa*/
   const adicionarTarefa = () => {
     if (tarefa.trim() === "") return;
-    setTarefas([...tarefas, tarefa]);
+    setTarefas([...tarefas, { texto: tarefa, checked: false }]);
     setTarefa("");
   };
 
@@ -35,6 +39,12 @@ function Home() {
   const removerTarefa = (index: number) => {
     const novasTarefas = [...tarefas];
     novasTarefas.splice(index, 1);
+    setTarefas(novasTarefas);
+  };
+
+  const alternarCheck = (index: number) => {
+    const novasTarefas = [...tarefas];
+    novasTarefas[index].checked = !novasTarefas[index].checked;
     setTarefas(novasTarefas);
   };
 
@@ -62,7 +72,7 @@ function Home() {
           <div className="area-tarefas">
             <div className="area-novaTarefa">
               <button className="botaoCriar" onClick={adicionarTarefa}>
-                +
+                <FontAwesomeIcon icon={faPlus} />
               </button>
               <input
                 type="text"
@@ -74,7 +84,22 @@ function Home() {
             <ul className="lista-tarefas">
               {tarefas.map((t, i) => (
                 <li className="tarefa" key={i}>
-                  {t}
+                  <div className="checkEtexto">
+                    <div
+                      className="area-botaoCheck"
+                      onClick={() => alternarCheck(i)}
+                    >
+                      {t.checked ? (
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="iconeCheck"
+                        />
+                      ) : (
+                        <div className="circuloVazio" />
+                      )}
+                    </div>
+                    <span className="textoTarefa">{t.texto}</span>
+                  </div>
                   <button className="botaoX" onClick={() => removerTarefa(i)}>
                     x
                   </button>

@@ -1,6 +1,6 @@
 /*Navegação*/
 .area-navegacao {
-  height: 56px;
+  min-height: 56px;
   border-bottom: 1px solid #dfdfdf;
   display: flex;
   align-items: center;
@@ -64,19 +64,26 @@ h2 {
 .area-botaoData svg {
   height: 27px;
   width: 27px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.area-botaoData svg:hover {
+  transform: scale(0.9);
 }
 
 /*=================================*/
 
 /*Tarefas*/
 .area-tarefas {
+  flex: 1;
   margin-top: 33px;
-  max-height: 601px;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
   flex-direction: column;
-  overflow-y: scroll;
+  align-items: center;
+  overflow-y: auto;
+  padding-bottom: 20px;
+  gap: 18px;
 }
 
 .area-tarefas::-webkit-scrollbar {
@@ -88,14 +95,13 @@ h2 {
   width: 311px;
   min-height: 45px;
   background-color: #d9d9d9; /* cinza claro */
-  border-radius: 8px;
+  border-radius: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 16px;
   gap: 10px;
-  border-radius: 20px;
-  flex-shrink: 0;
+  flex-shrink: 0; /*impede que a div diminua caso aconteça alguma alteração*/
 }
 
 .area-novaTarefa input {
@@ -108,50 +114,94 @@ h2 {
 }
 
 .botaoCriar {
-  background-color: #999999; /* botão branco */
-  color: #121212; /* cor do símbolo de + */
+  background-color: white; /* botão branco */
   border: none;
-  width: 17px;
-  height: 17px;
+  padding: 0;
+  width: 20px;
+  height: 20px;
   border-radius: 50%; /* deixa redondo */
-  font-size: 16px;
+  font-size: 11px;
   font-weight: bold;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 /*Animação botão*/
 .botaoCriar:hover {
-  transform: scale(1.1);
+  transform: scale(0.9);
   background-color: #919191;
+}
+
+/*====================*/
+
+.area-botaoCheck {
+  border-radius: 50%;
+  background-color: white;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.circuloVazio {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.iconeCheck {
+  color: #121212;
+  font-size: 16px;
 }
 
 .tarefa {
   width: 311px;
   height: 45px;
   background-color: #d9d9d9; /* cinza claro */
-  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 20px;
+  gap: 10px;
+  border-radius: 26px;
+}
+
+.lista-tarefas {
+  margin: 0;
+  list-style: none;
+  width: 311px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.checkEtexto {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 0 10px;
   gap: 10px;
-  border-radius: 20px;
-  margin: 18px;
+}
+
+.textoTarefa {
+  font-family: sans-serif;
 }
 
 .botaoX {
   background: transparent;
   border: none;
   transition: transform 0.2s ease, background-color 0.2s ease;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  color: rgb(99, 99, 99);
+  cursor: pointer;
 }
 
 .botaoX:hover {
-  transform: scale(1.2);
+  transform: scale(0.9);
 }
 
 /* Responsividade */
